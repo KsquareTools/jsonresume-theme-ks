@@ -36,7 +36,12 @@
         {{/if}}
 
         {{#if summary}}
-          <p class="summary">{{summary}}</p>
+          <h4 class="summary-sub">Project Summary</h4>
+          <p>{{summary}}</p>
+        {{/if}}
+        {{#if responsibilities}}
+          <h4 class="summary-sub">Project responsibilities</h4>
+          <p>{{{responsibilities}}}</p>
         {{/if}}
 
         <h4>

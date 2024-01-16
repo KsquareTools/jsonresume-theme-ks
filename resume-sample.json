@@ -34,6 +34,7 @@
       "inProgress": false,
       "projectName": "Project Example",
       "summary": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.",
+      "responsibilities": "- Worked with our professional services to build creative solutions to solve client Reconciliation requirements.\n- Design and development for:\nReconciliation rules generator for IntelliMATCH reconciliation applications suite\nApplication suite migration onto Azure\nDesign of RESTful service application interfaces for microservices\nContainerization of IntelliMATCH application services\nSQL DB schemas and procedures for (DIM, PIM) products\nDesign and implementation of integration data ingestion ETL/ELT tools for application suite\nISO-20022 ETL/ELT Integration application ISO-20022/SWIFT Message ingestion microservice (C#.NET 6.0-> RESTful, IBM MQ and Kafka)\n- Products built with Azure Databricks\nDesign and implementation of reconciliation engines in Databricks, Data Factory\nBanking and Securities Trading Reconciliation Data Warehousing using Databricks, Data Factory\nDesign of integration data ingestion ETL/ELT tools on Data Factory",
       "skills": [
         "Web development",
         "Communication with team"
