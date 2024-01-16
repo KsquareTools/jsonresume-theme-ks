@@ -15,49 +15,49 @@
   font-family: 'Josefin Sans';
   font-style: normal;
   font-weight: 300;
-  src: url(https://fonts.gstatic.com/s/josefinsans/v24/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_GbQbMZhKg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_GbQbMZhKg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Josefin Sans';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/josefinsans/v24/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_N_XbMZhKg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_N_XbMZhKg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 300;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6u_w4BMUTPHjxsI9w2_Gwfo.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI9w2_Gwfo.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6u8w4BMUTPHjxsAXC-v.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxsAXC-v.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6u_w4BMUTPHjxsI5wq_Gwfo.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI5wq_Gwfo.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh7USSwiPHA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USSwiPHA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6u9w4BMUTPHh6UVSwiPHA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwiPHA.ttf) format('truetype');
 }
 
 /* playfair-display-regular - latin */
@@ -342,6 +342,9 @@ body {
     font-size: 1.1em;
     font-weight: bold;
     margin-top: 5px; }
+  .right-column .summary-sub {
+    font-weight: bold;
+    margin: 1.4em 0 0 0; }
 
 .item {
   margin-bottom: 0.9em; }
@@ -474,7 +477,7 @@ body {
       <div class="right-column">
           {{#basics.summary}}<div class='summary-container'><div class='title'><h3>Professional Summary</h3></div><p class='summary'>{{basics.summary}}</p></div>{{/basics.summary}}
         
-            {{#work.length}}<div class='container work-container'><div class='title'><h3>Professional History</h3></div>{{#work}}<h4 class='summary-position'>{{position}}</h4><h4>{{company}}</h4><h4>{{projectName}}</h4><h4>{{client}}</h4><h4>{{#city}}{{city}}. {{/city}}{{#startDate}}<span class='startDate'>{{startDate}}</span>{{/startDate}}<span class='endDate'> {{#inProgress}} - Present {{/inProgress}}{{^inProgress}}{{#endDate}} - {{endDate}}{{/endDate}}{{/inProgress}}</span></h4>{{#summary}}<p class='summary'>{{summary}}</p>{{/summary}}{{#skillsPreview}}{{name}}{{^last}} | {{/last}}{{/skillsPreview}} {{#technologiesPreview}}{{name}}{{^last}} | {{/last}}{{/technologiesPreview}}{{/work}}</div>{{/work.length}}
+            {{#work.length}}<div class='container work-container'><div class='title'><h3>Professional History</h3></div>{{#work}}<h4 class='summary-position'>{{position}}</h4><h4>{{company}}</h4><h4>{{projectName}}</h4><h4>{{client}}</h4><h4>{{#city}}{{city}}. {{/city}}{{#startDate}}<span class='startDate'>{{startDate}}</span>{{/startDate}}<span class='endDate'> {{#inProgress}} - Present {{/inProgress}}{{^inProgress}}{{#endDate}} - {{endDate}}{{/endDate}}{{/inProgress}}</span></h4>{{#summary}}<h4 class='summary-sub'>Project Summary</h4><p>{{summary}}</p>{{/summary}}{{#responsibilities}}<h4 class='summary-sub'>Project Responsibilities</h4><p>{{{responsibilities}}}</p>{{/responsibilities}}{{#skillsPreview}}{{name}}{{^last}} | {{/last}}{{/skillsPreview}} {{#technologiesPreview}}{{name}}{{^last}} | {{/last}}{{/technologiesPreview}}{{/work}}</div>{{/work.length}}
       </div>
     </div>
     <div class="resume-footer  background-employee ">
