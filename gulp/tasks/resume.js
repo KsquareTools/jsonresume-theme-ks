@@ -1,7 +1,6 @@
-const
-  gulp = require('gulp'),
-  fs = require('fs'),
-  $ = require('gulp-load-plugins')();
+const gulp = require("gulp"),
+  fs = require("fs"),
+  $ = require("gulp-load-plugins")();
 
 const resume = () => {
   // if (!fs.existsSync('resume.json')) {
@@ -10,13 +9,17 @@ const resume = () => {
   // fs.createReadStream('resume-sample.json').pipe(fs.createWriteStream('resume.json'));
 
   // generates a template with json format.
-  fs.createReadStream('resume-template.json').pipe(fs.createWriteStream('resume.json'));
+  fs.createReadStream("resume-template.json").pipe(
+    fs.createWriteStream("resume.json")
+  );
   // }
 
-  return gulp.src('public/**/*').pipe($.size({
-    title: 'build',
-    gzip: true
-  }));
-}
+  return gulp.src("public/**/*").pipe(
+    $.size({
+      title: "build",
+      gzip: true,
+    })
+  );
+};
 
-gulp.task('resume', resume);
+gulp.task("resume", resume);
