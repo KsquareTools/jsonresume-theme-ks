@@ -1,28 +1,27 @@
-const
-  fs = require('fs'),
-  handlebars = require('handlebars'),
-  handlebarsWax = require('handlebars-wax'),
-  addressFormat = require('address-format'),
-  moment = require('moment'),
-  Swag = require('swag');
+const fs = require("fs"),
+  handlebars = require("handlebars"),
+  handlebarsWax = require("handlebars-wax"),
+  addressFormat = require("address-format"),
+  moment = require("moment");
 
-Swag.registerHelpers(handlebars);
-
-const isTechnology = (keywords) => keywords && keywords.some(keyword =>  keyword.toLowerCase() === "technologies");
+const isTechnology = (keywords) =>
+  keywords &&
+  keywords.some((keyword) => keyword.toLowerCase() === "technologies");
 const isSkill = (keywords) => !isTechnology(keywords);
-const isCertification = (education) => education.studyType.toLowerCase() === "certification";
-const isEducation = (education) => !isCertification(education); 
+const isCertification = (education) =>
+  education.studyType.toLowerCase() === "certification";
+const isEducation = (education) => !isCertification(education);
 
 handlebars.registerHelper({
   removeProtocol: function (url) {
-    return url.replace(/.*?:\/\//g, '');
+    return url.replace(/.*?:\/\//g, "");
   },
 
   concat: function () {
-    let res = '';
+    let res = "";
 
     for (let arg in arguments) {
-      if (typeof arguments[arg] !== 'object') {
+      if (typeof arguments[arg] !== "object") {
         res += arguments[arg];
       }
     }
@@ -36,19 +35,18 @@ handlebars.registerHelper({
       city: city,
       subdivision: region,
       postalCode: postalCode,
-      countryCode: countryCode
+      countryCode: countryCode,
     });
 
-
-    return addressList.join('<br/>');
+    return addressList.join("<br/>");
   },
 
-  formatDate: (date) => moment(date).format('MMM YYYY'),
-  formatYear: (date) => moment(date).format('YYYY'),
+  formatDate: (date) => moment(date).format("MMM YYYY"),
+  formatYear: (date) => moment(date).format("YYYY"),
   console: (object) => JSON.stringify(object),
 
-  technologiesMustache: () => 
-  `{{#technologies.length}}
+  technologiesMustache: () =>
+    `{{#technologies.length}}
     <div class="container technologies-container">
       <div class="title"><h3>Technologies</h3></div>
       <section>
@@ -88,40 +86,64 @@ handlebars.registerHelper({
   </div>
   {{/certifications.length}}`,
 
-  centerHeader: (branding, image, options) => (!branding && !image) ? options.fn(this) : options.inverse(this),
-  isArray: (element, options) => Array.isArray(element) ? options.fn(element) : options.inverse(element),
-  isDev: (label, options) => ["develop", "programmer"].some(term =>  label.toLowerCase().includes(term)) ? options.fn(this) : options.inverse(this),
-  isTechnology: (skill, options) => isTechnology(skill.keywords) ? options.fn(skill) : options.inverse(this),
-  ifHasTechnologies: (skills, options) => !Array.isArray(skills) || skills.some(skill => isTechnology(skill.keywords)) ? options.fn(skills) : options.inverse(this),
-  isSkill: (skill, options) => isSkill(skill.keywords) ? options.fn(skill) : options.inverse(this),
-  ifHasSkills: (skills, options) => !Array.isArray(skills) || skills.some(skill => isSkill(skill.keywords)) ? options.fn(skills) : options.inverse(this),
-  isEducation: (education, options) => isEducation(education) ? options.fn(education) : options.inverse(this),
-  ifHasEducation: (educations, options) => !Array.isArray(educations) || educations.some(education => isEducation(education)) ? options.fn(educations) : options.inverse(this),
-  isCertification: (education, options) => isCertification(education) ? options.fn(education) : options.inverse(this),
-  ifHasCertifications: (educations, options) => !Array.isArray(educations) ||  educations.some(education => isCertification(education)) ? options.fn(educations) : options.inverse(this),
+  centerHeader: (branding, image, options) =>
+    !branding && !image ? options.fn(this) : options.inverse(this),
+  isArray: (element, options) =>
+    Array.isArray(element) ? options.fn(element) : options.inverse(element),
+  isDev: (label, options) =>
+    ["develop", "programmer"].some((term) => label.toLowerCase().includes(term))
+      ? options.fn(this)
+      : options.inverse(this),
+  isTechnology: (skill, options) =>
+    isTechnology(skill.keywords) ? options.fn(skill) : options.inverse(this),
+  ifHasTechnologies: (skills, options) =>
+    !Array.isArray(skills) ||
+    skills.some((skill) => isTechnology(skill.keywords))
+      ? options.fn(skills)
+      : options.inverse(this),
+  isSkill: (skill, options) =>
+    isSkill(skill.keywords) ? options.fn(skill) : options.inverse(this),
+  ifHasSkills: (skills, options) =>
+    !Array.isArray(skills) || skills.some((skill) => isSkill(skill.keywords))
+      ? options.fn(skills)
+      : options.inverse(this),
+  isEducation: (education, options) =>
+    isEducation(education) ? options.fn(education) : options.inverse(this),
+  ifHasEducation: (educations, options) =>
+    !Array.isArray(educations) ||
+    educations.some((education) => isEducation(education))
+      ? options.fn(educations)
+      : options.inverse(this),
+  isCertification: (education, options) =>
+    isCertification(education) ? options.fn(education) : options.inverse(this),
+  ifHasCertifications: (educations, options) =>
+    !Array.isArray(educations) ||
+    educations.some((education) => isCertification(education))
+      ? options.fn(educations)
+      : options.inverse(this),
 });
 
 function render(resume) {
-  let dir = __dirname + '/public',
-    css = fs.readFileSync(dir + '/styles/main.css', 'utf-8'),
-    resumeTemplate = fs.readFileSync(dir + '/views/resume.hbs', 'utf-8');
+  let dir = __dirname + "/public",
+    css = fs.readFileSync(dir + "/styles/main.css", "utf-8"),
+    resumeTemplate = fs.readFileSync(dir + "/views/resume.hbs", "utf-8");
 
   let Handlebars = handlebarsWax(handlebars);
 
-  Handlebars.partials(dir + '/views/partials/**/*.{hbs,js}');
-  Handlebars.partials(dir + '/views/components/**/*.{hbs,js}');
+  Handlebars.partials(dir + "/views/partials/**/*.{hbs,js}");
+  Handlebars.partials(dir + "/views/components/**/*.{hbs,js}");
 
   return Handlebars.compile(resumeTemplate)({
     css: css,
-    resume: resume
+    resume: resume,
   });
 }
 
 const returnHTML = () => {
-  const dir = __dirname + '/public';
-  const html = fs.readFileSync(dir + '/index.html', 'utf-8')
+  const dir = __dirname + "/public";
+  const html = fs.readFileSync(dir + "/index.html", "utf-8");
   return html;
-}
+};
 
 module.exports = {
   render: render,
