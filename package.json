@@ -2,7 +2,7 @@
   "author": "The Ksquare Group",
   "name": "@the-ksquare-group/jsonresume-theme-ks",
   "description": "Theme for ksquare employees with JSON Resume",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "keywords": [
     "json",
     "resume",
@@ -60,7 +60,7 @@
     "sass": "^1.70.0"
   },
   "engines": {
-    "node": ">=10.0.0 <=14.0.0"
+    "node": ">=10.16.0 <15.0.0"
   },
   "overrides": {
     "gulp": {
